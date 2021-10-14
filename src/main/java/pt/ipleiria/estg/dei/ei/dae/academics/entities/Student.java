@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="STUDENTS")
 @NamedQueries({
         @NamedQuery(
                 name = "getAllStudents",
@@ -17,22 +16,7 @@ import java.util.Objects;
         )
 })
 
-public class Student implements Serializable {
-
-    @Id
-    private String username;
-
-    @NotNull
-    @Column(nullable = false)
-    private String password;
-
-    @NotNull
-    private String name;
-
-    @NotNull
-    @Email
-    private String email;
-
+public class Student extends User implements Serializable {
     public List<Subject> getSubjects() {
         return subjects;
     }
@@ -51,57 +35,19 @@ public class Student implements Serializable {
     private Course course;
 
     public Student(String username, String password, String name, String email, Course course) {
-        this();
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
+        super(username, password, name, email);
+        this.subjects = new LinkedList<>();
         this.course = course;
     }
 
     public Student(String username, String password, String name, String email, Course course, List<Subject> subjects) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
+        super(username, password, name, email);
         this.course = course;
         this.subjects = subjects;
     }
 
     public Student() {
         this.subjects = new LinkedList<>();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Course getCourse() {
