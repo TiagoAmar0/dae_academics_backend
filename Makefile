@@ -30,6 +30,6 @@ ps:
 	docker compose ps
 
 deploy: up build
-	docker compose cp target/*.war webserver:/opt/jboss/wildfly/standalone/deployments
+	docker compose cp target/academics.war webserver:/opt/jboss/wildfly/standalone/deployments
 
 monitor: deploy logs

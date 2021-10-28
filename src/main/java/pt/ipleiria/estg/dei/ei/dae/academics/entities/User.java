@@ -12,6 +12,9 @@ public class User implements Serializable {
     @Id
     protected String username;
 
+    @Version
+    private int version;
+
     @NotNull
     @Column(nullable = false)
     protected String password;

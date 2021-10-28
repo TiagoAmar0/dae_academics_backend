@@ -26,6 +26,9 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
     private List<Student> students;
 
+    @Version
+    private int version;
+
     @NotNull
     @OneToMany(mappedBy = "course")
     private List<Subject> subjects;
