@@ -4,6 +4,7 @@ import pt.ipleiria.estg.dei.ei.dae.academics.dtos.CourseDTO;
 import pt.ipleiria.estg.dei.ei.dae.academics.ejbs.CourseBean;
 import pt.ipleiria.estg.dei.ei.dae.academics.entities.Course;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,6 +21,7 @@ public class CourseService {
 
     @GET
     @Path("/")
+    @RolesAllowed({"Administrator", "Student"})
     public Response all(){
         var courses = courseBean.getAllCourses();
         var dtos = toDTOs(courses);

@@ -1,0 +1,36 @@
+### Get JWT token
+POST http://localhost:8080/academics/api/auth/login
+Content-Type: application/x-www-form-urlencoded
+username=admin&password=admin
+### Who am I?
+GET http://localhost:8080/academics/api/auth/user
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6InF1aWNrc3RhcnQtand0LWlzc3VlciIsImF1ZCI6Imp3dC1hdWRpZW5jZSIsImdyb3VwcyI6WyJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTYzNjA1ODk1OH0.OJG4uk7hhgEoXMcGswdKYXyz5bHcc55yTzMbSEZlA7feTR0RT6IzYebtJdiOYkBVWX-ijwFLOLM4np6AJF467T9j8PaVOVHM_ON-7Vl0jh0h-ptr28PW-AeK6fd3q6Ra2w7Y7YiySoNFY-XMDjLloEWZRbJ5VDC-BKLDVOahvG1QHMfaVJdaSBVBib9BD2cpTNvQCiPMWGafZLbvQCn-IQnVNekWPkMzYLwG8RFdeTTIfHIKT1eHqsa0GMq0cN3G_G2tljQythj5Bk3ZqjCdXv1GainuQCfYH467SyMSJEUwElfE-7CEd6Mx2soW963E6BAfwprVGYHpdl6aILfidg
+##### Get students list
+GET http://localhost:8080/academics/api/students
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9
+### Create new student
+POST http://localhost:8080/academics/api/students
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9
+
+{ "email": "jane@mail.com",
+ "name": "Jane Doe",
+ "username": "1234567",
+ "password": "aaaaa",
+ "courseCode":"1",
+ "courseName": "EI"
+}
+### Enroll student in a subject - run after the previous POST
+PUT http://localhost:8080/academics/api/students/1234567/subjects/enroll/1
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9
+### Get a student’s details
+GET http://localhost:8080/academics/api/students/1111111
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9
+### Delete a student - run after the previous POST
+DELETE http://localhost:8080/academics/api/students/1234567
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9
+###
